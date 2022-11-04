@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/padres-world-series-runs-1998-2022/index.html",
+    "href": "posts/padres-world-series-runs-1998-2022/index.html",
+    "title": "Why the 2022 Padres did not get as far as the 1998 Padres",
+    "section": "",
+    "text": "creating a step chart\n\n\nCode\nlibrary(tidyverse)\nlibrary(ggalt)\n\nPadres2022 <- read_csv(\"Padres2022Hitting.csv\") %>% mutate(Year = 2022, Team = \"Padres\")\nPadres1998 <- read_csv(\"PadresHitting1998.csv\") %>% mutate(Year = 1998, Team = \"Padres\")\nbaseballstats <- read_csv(\"baseballstats.csv\")\n\nPadres22and98 <- bind_rows(Padres2022, Padres1998)\n\nggplot() + \n  geom_step(\n    data=Padres22and98,\n    aes(y=Year, x=Runs, group=Team), \n    color=\"light grey\") +\n  geom_step(\n    data=Padres2022, \n    aes(y=Year, x=Runs, group=Team), \n    color=\"brown\") + \n  geom_step(\n    data=Padres1998, \n    aes(y=Year, x=Runs, group=Team), \n    color=\"yellow\") +\n  annotate(\n    \"text\", \n    x=(as.Date(\"2021-02-10\")), \n    y=-70, \n    label=\"2022 Padres\") +\n  annotate(\n    \"text\", \n    x=(as.Date(\"2021-03-01\")), \n    y=330, \n    label=\"1998 Padres\") +\nlabs(x=\"Total runs\", y=\"Year\", title=\"The 1998 Padres scored way more runs than the 2022 Padres\", subtitle=\"The 98 Padres scored almost twice as many runs as the 22 Padres, leading them to a World Series Appearence.\", caption=\"Source: https://www.baseball-reference.com | By Mady Vinci\") + \n  theme_minimal() + \n  theme(\n    plot.title = element_text(size = 16, face = \"bold\"),\n    axis.title = element_text(size = 8), \n    plot.subtitle = element_text(size=10), \n    panel.grid.minor = element_blank()\n    )\n\n\n\n\n\ncreating stacked bar\n\n\nCode\nlibrary(tidyverse)\nlibrary(ggalt)\n\nPadres2022 <- read_csv(\"Padres2022Hitting.csv\")\nPadres1998 <- read_csv(\"PadresHitting1998.csv\")\nbaseballstats <- read_csv(\"baseballstats.csv\")\n\nPadres1998Runs <- Padres1998 %>%\n    TotalTeamRuns98 = sum(Runs)\nPadres2022Runs <- Padres2022 %>%\n    TotalTeamRuns22 = sum(Runs)\n\nggplot() + \n  geom_bar(\n    data=Padres1998Runs, Padres2022Runs,\n    aes(x=reorder(Year, TotalRuns), \n        weight=Runs, \n        fill=Type)) + \n  coord_flip()\n  ) +\nlabs(x=\"Total runs\", y=\"Year\", title=\"The 1998 Padres scored way more runs than the 2022 Padres\", subtitle=\"The 98 Padres scored almost twice as many runs as the 22 Padres, leading them to a World Series Appearence.\", caption=\"Source: https://www.baseball-reference.com | By Mady Vinci\") + \n  theme_minimal() + \n  theme(\n    plot.title = element_text(size = 16, face = \"bold\"),\n    axis.title = element_text(size = 8), \n    plot.subtitle = element_text(size=10), \n    panel.grid.minor = element_blank()\n    )\n\n\ncreating a lollipopchart\n\n\nCode\nggplot() + \n  geom_lollipop(\n    data=Padres1998Runs, Padres2022Runs, \n    aes(y=reorder(Year, Runs), x=Runs), \n    horizontal = TRUE\n    ) + \n  geom_lollipop(\n    data=Padres2022Runs,\n    aes(y=Year, x=Runs),\n    horizontal = TRUE,\n    color = \"brown\"\n      ) + \n  geom_lollipop(\n    data=Padres1998Runs,\n    aes(y=Year, x=Runs),\n    horizontal = TRUE,\n    color = \"yellow\"\n  ) +\nlabs(x=\"Total runs\", y=\"Year\", title=\"The 1998 Padres scored way more runs than the 2022 Padres\", subtitle=\"The 98 Padres scored almost twice as many runs as the 22 Padres, leading them to a World Series Appearence.\", caption=\"Source: https://www.baseball-reference.com | By Mady Vinci\") + \n  theme_minimal() + \n  theme(\n    plot.title = element_text(size = 16, face = \"bold\"),\n    axis.title = element_text(size = 8), \n    plot.subtitle = element_text(size=10), \n    panel.grid.minor = element_blank()\n    )"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "vinci_project_1",
+    "section": "",
+    "text": "mlb\n\n\npadres\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2022\n\n\nMady Vinci\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 18, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  }
+]
